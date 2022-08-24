@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hivemq-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: hivemq
+  ports:
+    - port: 1883
+      targetPort: 1883
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hivemq-loadbalancer-service
+spec:
+  selector:
+    app: hivemq
+  ports:
+    - protocol: TCP
+      port: 1883
+      targetPort: 1883
+  type: LoadBalancer
+  loadBalancerIP: 104.198.195.67
