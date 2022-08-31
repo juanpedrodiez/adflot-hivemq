@@ -1,1 +1,1 @@
-docker run -it -p 1883:1883 hivemq
+docker run -it -p 1883:1883 -v /home/jpdiez/Documentos/kubernetes/adflot-hivemq/conf:/usr/local/hivemq/conf us.gcr.io/sicove/hermes-hivemq:v1.0.0

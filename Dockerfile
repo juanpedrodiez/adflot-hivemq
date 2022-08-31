@@ -2,9 +2,10 @@ FROM hivemq/hivemq-ce
 
 LABEL "Maintainer"="Juan Pedro Diez"
 
-#ENV MOSQUITTO_HOME /mosquitto
-#ENV MOSQUITTO_CONF ${MOSQUITTO_HOME}/config
+ENV HIVEMQ_HOME=/opt/hivemq-ce-2022.1
 
 RUN rm -Rf extensions && mkdir extensions
 
-COPY extensions/ /opt/hivemq-ce-2021.3/extensions
+COPY extensions/ ${HIVEMQ_HOME}/extensions
+
+RUN ln -s /usr/local/hivemq/conf/credentials.xml ${HIVEMQ_HOME}/extensions/hivemq-file-rbac-extension/credentials.xml
